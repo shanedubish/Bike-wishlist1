@@ -1,7 +1,7 @@
 {
   "name": "bike-wishlist1",
   "version": "1.0.0",
-  "engine": {
+  "engines": {
     "node": "14.0.0"
   },
   "description": "",
