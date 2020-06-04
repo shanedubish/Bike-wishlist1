@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('../partials/bikes_head.ejs') %>
+  </head>
+  <body>
+    
+    <div class="container">
+
+      <h1>Bikes Index Page</h1>
+      <ul>
+        <% for (let bike of bikes ) { %>
+          <li>
+            <a href="/bikes/<%=bike._id%>">
+              <%= bike.title %>
+          </li>
+       <% } %>
+      </ul>
+    </div>
+  </body>
+</html
