@@ -4,18 +4,31 @@
     <%- include ('../partials/bikes_head.ejs') %>
   </head>
   <body>
-    
+    <nav>
+      <ul>
+
+      <li>
+    <h4><a href="/bikes/new/">Add new Bike</a></h4></li>
+    <li><h4><a href="/bikes/seed/">add sample Bikes</a></h4></li>
+    </ul>
+  </nav>
     <div class="container">
 
       <h1>Bikes Index Page</h1>
+
       <ul>
         <% for (let bike of bikes ) { %>
           <li>
+            <img src="<%= bike.img %>" alt="">
+            <form action="/bikes/<%=bike.id; %>?_method=DELETE" method="POST"">
+                        <input type="submit"value="delete">
+                      </form><br>
             <a href="/bikes/<%=bike._id%>">
               <%= bike.title %>
           </li>
        <% } %>
       </ul>
+
     </div>
   </body>
 </html
