@@ -2,24 +2,76 @@ const express = require("express");
 const Bike = require("../models/allbikes.js");
 const router = express.Router();
 
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next();
+  } else {
+    res.redirect("/sessions/new");
+  }
+};
+
 //add new bike
-router.get("/new", (req, res) => {
-  res.render("bikes/bike_new.ejs");
+router.get("/new", isAuthenticated, (req, res) => {
+  res.render("bikes/bike_new.ejs", { currentUser: req.session.currentUser });
 });
 
+//edit a bike
+router.get("/:id/edit", isAuthenticated, (req, res) => {
+  Bike.findById(req.params.id, (err, findDreamBike) => {
+    res.render("bikes/bike_edit.ejs", {
+      bike: findDreamBike,
+      currentUser: req.session.currentUser,
+    });
+  });
+});
+// delete a bike
+router.delete("/:id", isAuthenticated, (req, res) => {
+  Bike.findByIdAndRemove(req.params.id, (err, data) => {
+    res.redirect("/bikes");
+  });
+});
+
+//show page
+router.get("/:id", isAuthenticated, (req, res) => {
+  if (req.session.currentUser) {
+    Bike.findById(req.params.id, (err, gotbikes) => {
+      res.render("bikes/bike_show.ejs", {
+        bike: gotbikes,
+        currentUser: req.session.currentUser,
+      });
+    });
+  } else {
+    res.redirect("/sessions/new");
+  }
+});
+
+//update
+router.put("/:id", (req, res) => {
+  Bike.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+
+    (err, updatedModel) => {
+      res.redirect("/bikes/");
+    }
+  );
+});
+
+//create
 router.post("/", (req, res) => {
   Bike.create(req.body, (error, makeDreamBike) => {
     res.redirect("/bikes/");
   });
 });
-
-//edit a bike
-router.get("/:id/edit", (req, res) => {
-  Bike.findById(req.params.id, (err, findDreamBike) => {
-    res.render("bikes/bike_edit.ejs", { bike: findDreamBike });
+//index page
+router.get("/", (req, res) => {
+  Bike.find({}, (error, mybikes) => {
+    res.render("bikes/bike_index.ejs", {
+      bikes: mybikes,
+      currentUser: req.session.currentUser,
+    });
   });
 });
-
 //seed bikes
 router.get("/seed", async (req, res) => {
   const newProducts = [
@@ -69,39 +121,5 @@ router.get("/seed", async (req, res) => {
     res.send(err.message);
   }
 });
-// delete a bike
-router.delete("/:id", (req, res) => {
-  Bike.findByIdAndRemove(req.params.id, (err, data) => {
-    res.redirect("/bikes");
-  });
-});
 
-//update
-router.put("/:id", (req, res) => {
-  Bike.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-
-    (err, updatedModel) => {
-      res.redirect("/bikes/");
-    }
-  );
-});
-
-//index page
-router.get("/", (req, res) => {
-  Bike.find({}, (error, mybikes) => {
-    res.render("bikes/bike_index.ejs", {
-      bikes: mybikes,
-      // currentUser: req.session.currentUser,
-    });
-  });
-});
-
-//show page
-router.get("/:id", (req, res) => {
-  Bike.findById(req.params.id, (err, gotbikes) => {
-    res.render("bikes/bike_show.ejs", { bike: gotbikes });
-  });
-});
 module.exports = router;

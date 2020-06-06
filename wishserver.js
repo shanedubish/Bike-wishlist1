@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const app = express();
 const db = mongoose.connection;
+const session = require("express-session");
 require("dotenv").config();
 //___________________
 //Port
@@ -26,6 +27,7 @@ mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
+  useCreateIndex: true,
 });
 
 // Error / success
@@ -47,16 +49,24 @@ app.use(express.json()); // returns middleware that only parses JSON - may or ma
 //use method override
 app.use(methodOverride("_method")); // allow POST, PUT and DELETE from a form
 
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 //controllers
 
 const bikesController = require("./controllers/bike_controller.js");
 app.use("/bikes", bikesController);
 
-// const userController = require("./controllers/bike_users_controller.js");
-// app.use("/users", userController);
-//
-// const sessionsController = require("./controllers/bike_sessions_controller.js");
-// app.use("/sessions", sessionsController);
+const userController = require("./controllers/bike_users_controller.js");
+app.use("/users", userController);
+
+const sessionsController = require("./controllers/bike_sessions_controller.js");
+app.use("/sessions", sessionsController);
 
 //___________________
 // Routes
