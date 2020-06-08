@@ -1,0 +1,21 @@
+/* * {
+  border: 1px solid blue;
+} */
+.index {
+  width: 400px;
+  border-radius: 20px;
+  -webkit-box-shadow: 2px -1px 24px 10px #000000;
+  box-shadow: 2px -1px 24px 10px #000000;
+}
+li {
+  list-style: none;
+}
+img {
+}
+body {
+  background-image: url(https://i.pinimg.com/originals/82/a3/c2/82a3c27fd2666a9912fee2431b1586ea.jpg);
+  background-color: #b9b1b1;
+  background-position: bottom;
+  background-repeat: repeat-y;
+  background-size: 100%;
+}

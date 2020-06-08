@@ -4,25 +4,37 @@
     <%- include ('../partials/bikes_head.ejs') %>
   </head>
   <body>
-    <nav>
+
       <%- include ('../partials/bikes_nav.ejs') %>
-    </nav>
+
     <div class="container">
 
-      <h1>Bikes Index Page</h1>
+      <h1>Dream List</h1>
+
+
+
 
       <ul>
+
+        <div class="row justify-content-around">
+
+
         <% for (let bike of bikes ) { %>
           <li>
-            <img src="<%= bike.img %>" alt="">
+            <a href="/bikes/<%=bike._id%>">
+            <img src="<%= bike.img %>" alt="" class="index">
+            <h3><%= bike.title %></h3>
             <form action="/bikes/<%=bike.id; %>?_method=DELETE" method="POST"">
                         <input type="submit"value="delete">
                       </form><br>
-            <a href="/bikes/<%=bike._id%>">
-              <%= bike.title %>
+
+
           </li>
        <% } %>
+       </div>
+
       </ul>
+
 
     </div>
   </body>
