@@ -8,19 +8,21 @@
     </head>
 
     <body class="show">
-      <nav>
+    <section class="flow">
+
+
         <%- include ('../partials/bikes_nav.ejs') %>
-      </nav>
 
-
+</section>
       <div class="container">
         <div class="showtop">
 
 
+          <div class="showdiv">
+        <h2 class="showa">The <%=bike.title; %></h2>
+        <img class="rounded" src="<%=bike.img; %>" >
 
-        <h2 class="showa">The <%=bike.title; %></h2>  <img src="<%=bike.img; %>" >
-          </div>
-        <div class="showdiv">
+
 
 
         <h3>Manufacture:  <%=bike.manufacture; %></h3>
@@ -35,6 +37,7 @@
           <form class="" action="/bikes/<%=bike.id%>/buy?_method=PUT" method="POST">
             <h3 class="showa"><a href="/bikes">Back to bikes Index</a></h3><br>
         </nav>
+          </div>
           </div>
           </div>
     </body>

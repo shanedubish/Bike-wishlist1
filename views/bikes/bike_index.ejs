@@ -3,20 +3,27 @@
   <head>
     <%- include ('../partials/bikes_head.ejs') %>
   </head>
-  <body>
+  <body class="show">
+    <section class="flow">
+
 
       <%- include ('../partials/bikes_nav.ejs') %>
-
+    </section>
     <div class="container">
-
-      <h1>Dream List</h1>
-
+        <%if (currentUser) {%>
 
 
+      <%} else{%>
 
+        <h1 class="text-center">Make An Account and get Started</h1>
+        <%}%>
+
+        
       <ul>
 
         <div class="row justify-content-around">
+
+          <%if (currentUser) {%>
 
 
         <% for (let bike of bikes ) { %>
@@ -31,6 +38,10 @@
 
           </li>
        <% } %>
+
+         <%} else{%>
+
+           <%}%>
        </div>
 
       </ul>

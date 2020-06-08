@@ -12,8 +12,11 @@
     <li><a href="/sessions/new">Log In</a> </li>
   <}%>
 </ul> -->
+<div class="headpic">
 
-<img src="https://i.pinimg.com/originals/b9/78/93/b978935f27d51f746a85602b4a5f5239.jpg" class="img-fluid" alt="Responsive image" width= "100% \9"; >
+<h1 class="text-center">Welcome to Dream Engines</h1>
+<!-- <img src="https://i.pinimg.com/originals/b9/78/93/b978935f27d51f746a85602b4a5f5239.jpg" class="img-fluid" alt="Responsive image" width= "100% \5" height="70%"> -->
+</div>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #aba4a4;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -22,14 +25,18 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <h4><a class="nav-link"  href="/bikes/new">Add New Bike<span class="sr-only"></span></a></h4>
-      </li>
+
       <%if (currentUser) {%>
-      <li class="nav-item">
+        <li class="nav-item active">
+          <h4><a class="nav-link"  href="/bikes/new">Add New Bike<span class="sr-only"></span></a></h4>
+        </li>
+        <li class="nav-item active">
+          <h4><a class="nav-link"  href="/bikes/seed">Sample Bikes<span class="sr-only"></span></a></h4>
+        </li>
+      <li class="nav-item active">
         <h3>..."Hey <%=currentUser.username%>"...</h3>
       </li>
-      <li class="nav-item">
+      <li class="nav-itemn active ">
         <form action="/sessions?_method=DELETE" method="POST" >
           <input type="submit" value="Log Out" class="btn-small red" />
         </form>
