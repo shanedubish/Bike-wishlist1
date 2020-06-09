@@ -4,3 +4,10 @@ body {
   background-position: center;
   background-blend-mode: color-burn;
 }
+h1 {
+  color: white;
+  font-size: 4em;
+  padding: 20px;
+  text-shadow: 3px 5px 2px #474747;
+  text-align: center;
+}

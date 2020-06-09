@@ -2,7 +2,7 @@
   border: 1px solid blue;
 } */
 .index {
-  width: 450px;
+  width: 400px;
   border-radius: 20px;
   -webkit-box-shadow: 2px -1px 24px 10px #000000;
   box-shadow: 2px -1px 24px 10px #000000;
@@ -25,7 +25,7 @@ img {
 }
 .text-center {
   color: white;
-  font-size: 4em;
+  font-size: 5em;
   padding: 20px;
   text-shadow: 3px 5px 2px #474747;
 }
