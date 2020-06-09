@@ -11,3 +11,38 @@ h1 {
   text-shadow: 3px 5px 2px #474747;
   text-align: center;
 }
+h2 {
+  text-align: center;
+  font-size: 3em;
+}
+h3 {
+  color: white;
+  font-size: 3em;
+  text-shadow: 3px 5px 2px #474747;
+  text-align: center;
+}
+.row {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+}
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info {
+  margin: 30px;
+  font-size: 1.5em;
+  width: 50%;
+}
+.pic {
+  width: 50%;
+}
+img {
+  width: 100%;
+}
