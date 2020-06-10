@@ -10,7 +10,7 @@
 
 - Also the model in this site puts to use the 7 RESTful routes, full CRUD, and employs the MVC file structure.
 
-- As part of this site Ejs partials was taken advantage of to help limit repetition.
+- As part of this site Ejs partials were taken advantage of to help limit repetition.
 
 - This site has also incorporated sign up and log in functionality, including encrypted passwords and an authorization flow.
 
